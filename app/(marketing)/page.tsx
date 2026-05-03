@@ -21,6 +21,7 @@ import {
   MessageCircle,
   Code2,
   MapPin,
+  Layers,
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
@@ -117,6 +118,24 @@ const skillOutcomes = [
   { title: "Creative expression", body: "Turn stories and art into code, especially in Scratch.", icon: Sparkles },
   { title: "Digital citizenship", body: "Safe sharing, attribution, and kind collaboration online.", icon: Users },
   { title: "Debugging grit", body: "Read errors, test fixes, and celebrate small wins.", icon: MessageCircle },
+];
+
+const lmsHighlights = [
+  {
+    title: "All-in-one course hub",
+    body: "Our learning management system (LMS) keeps each track in one place—lessons, links, and files—so students always know where to go.",
+    icon: Layers,
+  },
+  {
+    title: "Practice next to teaching",
+    body: "Quizzes and activities sit alongside instruction so learners can check understanding without leaving the platform.",
+    icon: BookOpenCheck,
+  },
+  {
+    title: "Works for school workflows",
+    body: "Facilitators can follow pacing, see who is engaged, and support both online check-ins and lab sessions from the same system.",
+    icon: School,
+  },
 ];
 
 const faqs = [
@@ -338,6 +357,52 @@ export default function HomePage() {
           </div>
         </div>
         </Reveal>
+      </section>
+
+      <section className="border-y border-slate-200/80 bg-slate-50/80 py-16">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <Reveal>
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-extrabold uppercase tracking-wide text-primary">
+                Learning management system
+              </p>
+              <h2 className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">
+                Your classes run on a real LMS
+              </h2>
+              <p className="mt-3 text-base font-medium text-muted">
+                We don&apos;t just send PDFs—students and teachers use a dedicated platform built for
+                structured coding programs, progress, and communication.
+              </p>
+            </div>
+          </Reveal>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {lmsHighlights.map((item, i) => {
+              const Icon = item.icon;
+              return (
+                <Reveal key={item.title} delayMs={i * 80}>
+                  <Card className="h-full border-2 border-slate-200/80 bg-white transition-transform duration-300 ease-out motion-safe:hover:-translate-y-0.5 motion-safe:hover:shadow-lg">
+                    <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-accent/15 text-accent">
+                      <Icon className="h-6 w-6" aria-hidden />
+                    </span>
+                    <CardTitle className="mt-4 text-lg">{item.title}</CardTitle>
+                    <CardDescription className="!mt-2 !text-sm !leading-relaxed">
+                      {item.body}
+                    </CardDescription>
+                  </Card>
+                </Reveal>
+              );
+            })}
+          </div>
+          <Reveal delayMs={120}>
+            <div className="mx-auto mt-10 flex max-w-xl flex-col items-center gap-4 text-center">
+              <p className="text-sm font-semibold text-muted">Want a walkthrough of the LMS?</p>
+              <ButtonLink href="/contact" variant="outlineAccent" className="justify-center">
+                Request a demo
+                <ArrowRight className="h-4 w-4" />
+              </ButtonLink>
+            </div>
+          </Reveal>
+        </div>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">

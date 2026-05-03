@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { CourseCatalogGrid } from "@/components/marketing/course-catalog-grid";
 import { Reveal } from "@/components/ui/reveal";
 import { getAllCourses } from "@/lib/courses";
+import { annualFeePerCourseLabel } from "@/lib/pricing";
 
 export const metadata: Metadata = {
   title: "Courses",
@@ -20,6 +22,11 @@ export default function CoursesPage() {
           </h1>
           <p className="mt-4 text-lg font-medium text-muted">
             Overview of our tracks, reach out for syllabi, pacing, and how we support teachers.
+            Annual tuition is {annualFeePerCourseLabel} per course—see{" "}
+            <Link href="/pricing" className="font-bold text-primary hover:underline">
+              pricing
+            </Link>{" "}
+            for details.
           </p>
         </div>
       </Reveal>
