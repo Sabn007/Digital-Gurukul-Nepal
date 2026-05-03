@@ -1,26 +1,129 @@
 @import "tailwindcss";
 
+/* Brand: #db2537 (primary), #2a96de (accent) */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f8fc;
+  --foreground: #1b1b24;
+  --primary: #db2537;
+  --primary-foreground: #ffffff;
+  --accent: #2a96de;
+  --accent-foreground: #ffffff;
+  --muted: #5a6672;
+  --card: #ffffff;
+  --ring: #2a96de;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-ring: var(--ring);
+  --font-sans: var(--font-nunito);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Entrance (above-the-fold); respects reduced motion via class pair */
+@keyframes dg-enter-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dg-animate-in {
+  opacity: 0;
+  animation: dg-enter-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.dg-animate-in-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.dg-animate-in-delay-2 {
+  animation-delay: 0.22s;
+}
+
+.dg-animate-in-delay-3 {
+  animation-delay: 0.32s;
+}
+
+/* Soft floating blobs (hero / CTAs) */
+@keyframes dg-blob {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(6%, -5%) scale(1.05);
+  }
+  66% {
+    transform: translate(-4%, 4%) scale(0.98);
+  }
+}
+
+.dg-blob {
+  animation: dg-blob 18s ease-in-out infinite;
+}
+
+.dg-blob-reverse {
+  animation: dg-blob 22s ease-in-out infinite reverse;
+}
+
+/* Hero card: gentle “on water” bob (vertical + slight drift) */
+@keyframes dg-float-water {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(1deg);
+  }
+  20% {
+    transform: translate(5px, -10px) rotate(0.8deg);
+  }
+  40% {
+    transform: translate(-3px, -16px) rotate(1.1deg);
+  }
+  60% {
+    transform: translate(-6px, -8px) rotate(0.9deg);
+  }
+  80% {
+    transform: translate(3px, -14px) rotate(1deg);
+  }
+}
+
+.dg-float-water {
+  animation: dg-float-water 6.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dg-animate-in,
+  .dg-animate-in-delay-1,
+  .dg-animate-in-delay-2,
+  .dg-animate-in-delay-3 {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .dg-blob,
+  .dg-blob-reverse {
+    animation: none;
+  }
+
+  .dg-float-water {
+    animation: none;
+    transform: rotate(1deg);
+  }
 }
