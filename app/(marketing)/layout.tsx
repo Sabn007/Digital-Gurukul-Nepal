@@ -1,3 +1,4 @@
+import { PromoPopup } from "@/components/marketing/promo-popup";
 import { SiteFooter } from "@/components/marketing/site-footer";
 import { SiteHeader } from "@/components/marketing/site-header";
 
@@ -11,6 +12,7 @@ export default function MarketingLayout({
       <SiteHeader />
       <main className="flex-1 pb-12">{children}</main>
       <SiteFooter />
+      <PromoPopup />
     </div>
   );
 }
