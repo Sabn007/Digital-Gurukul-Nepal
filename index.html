@@ -1,142 +1,167 @@
-# 📊 Simple Result Management System (HTML + CSS + JS)
-
-## ✅ Features
-
-* Add student name
-* Enter marks for 3 subjects
-* Calculate total, percentage
-* Show grade (A, B, C, Fail)
-
----
-
-## 🌐 Full Code (Single File)
-
-```html
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Result Management System</title>
+  <title>Class Results Dashboard</title>
 
   <style>
     body {
       font-family: Arial;
-      background: #f4f4f4;
+      background: #f4f6f9;
       text-align: center;
     }
 
+    h1 {
+      background: #2d6cdf;
+      color: white;
+      padding: 15px;
+      margin: 0;
+    }
+
     .container {
+      margin: 20px auto;
+      width: 350px;
       background: white;
-      padding: 20px;
-      margin: 50px auto;
-      width: 300px;
+      padding: 15px;
       border-radius: 10px;
       box-shadow: 0 0 10px gray;
     }
 
     input {
       width: 90%;
-      padding: 10px;
+      padding: 8px;
       margin: 5px;
     }
 
     button {
-      padding: 10px;
-      width: 100%;
-      background: blue;
+      padding: 8px;
+      width: 95%;
+      background: green;
       color: white;
       border: none;
-      margin-top: 10px;
       cursor: pointer;
+      margin-top: 10px;
     }
 
-    #result {
-      margin-top: 15px;
-      font-weight: bold;
+    table {
+      width: 90%;
+      margin: 20px auto;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid black;
+      padding: 8px;
+    }
+
+    th {
+      background: black;
+      color: white;
+    }
+
+    .A { color: green; font-weight: bold; }
+    .B { color: blue; font-weight: bold; }
+    .C { color: orange; font-weight: bold; }
+    .F { color: red; font-weight: bold; }
+
+    .delete {
+      background: red;
+      color: white;
+      border: none;
+      padding: 5px;
+      cursor: pointer;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="container">
-    <h2>Student Result</h2>
+<h1>📊 Class Results Dashboard</h1>
 
-    <input type="text" id="name" placeholder="Enter Name" />
-    <input type="number" id="sub1" placeholder="Math Marks" />
-    <input type="number" id="sub2" placeholder="Science Marks" />
-    <input type="number" id="sub3" placeholder="English Marks" />
+<div class="container">
+  <input type="text" id="name" placeholder="Student Name">
+  <input type="number" id="math" placeholder="Math Marks">
+  <input type="number" id="science" placeholder="Science Marks">
+  <input type="number" id="english" placeholder="English Marks">
 
-    <button onclick="calculate()">Generate Result</button>
+  <button onclick="addStudent()">Add Result</button>
+</div>
 
-    <div id="result"></div>
-  </div>
+<table id="table">
+  <tr>
+    <th>Name</th>
+    <th>Total</th>
+    <th>%</th>
+    <th>Grade</th>
+    <th>Action</th>
+  </tr>
+</table>
 
-  <script>
-    function calculate() {
-      let name = document.getElementById("name").value;
-      let s1 = Number(document.getElementById("sub1").value);
-      let s2 = Number(document.getElementById("sub2").value);
-      let s3 = Number(document.getElementById("sub3").value);
+<script>
+  let students = [];
 
-      let total = s1 + s2 + s3;
-      let percent = total / 3;
+  function addStudent() {
+    let name = document.getElementById("name").value;
+    let m = Number(document.getElementById("math").value);
+    let s = Number(document.getElementById("science").value);
+    let e = Number(document.getElementById("english").value);
 
-      let grade = "";
+    if (!name) return alert("Enter name");
 
-      if (percent >= 80) {
-        grade = "A";
-      } else if (percent >= 60) {
-        grade = "B";
-      } else if (percent >= 40) {
-        grade = "C";
-      } else {
-        grade = "Fail ❌";
-      }
+    let total = m + s + e;
+    let percent = total / 3;
 
-      document.getElementById("result").innerHTML =
-        "Name: " + name + "<br>" +
-        "Total: " + total + "<br>" +
-        "Percentage: " + percent.toFixed(2) + "%<br>" +
-        "Grade: " + grade;
-    }
-  </script>
+    let grade = "";
+
+    if (percent >= 80) grade = "A";
+    else if (percent >= 60) grade = "B";
+    else if (percent >= 40) grade = "C";
+    else grade = "F";
+
+    let student = { name, total, percent, grade };
+
+    students.push(student);
+    display();
+    clearInputs();
+  }
+
+  function display() {
+    let table = document.getElementById("table");
+
+    table.innerHTML = `
+      <tr>
+        <th>Name</th>
+        <th>Total</th>
+        <th>%</th>
+        <th>Grade</th>
+        <th>Action</th>
+      </tr>
+    `;
+
+    students.forEach((s, i) => {
+      table.innerHTML += `
+        <tr>
+          <td>${s.name}</td>
+          <td>${s.total}</td>
+          <td>${s.percent.toFixed(2)}%</td>
+          <td class="${s.grade}">${s.grade}</td>
+          <td><button class="delete" onclick="remove(${i})">Delete</button></td>
+        </tr>
+      `;
+    });
+  }
+
+  function remove(i) {
+    students.splice(i, 1);
+    display();
+  }
+
+  function clearInputs() {
+    document.getElementById("name").value = "";
+    document.getElementById("math").value = "";
+    document.getElementById("science").value = "";
+    document.getElementById("english").value = "";
+  }
+</script>
 
 </body>
 </html>
-```
-
----
-
-## 🎯 What Students Learn
-
-* Taking input (`input`)
-* JavaScript calculations
-* Conditions (`if/else`)
-* Updating UI (`innerHTML`)
-* Basic styling
-
----
-
-## 🚀 Bonus Ideas (For Students)
-
-* Add more subjects
-* Add Pass/Fail logic per subject
-* Add colors for grades
-* Show “Excellent 🎉” for A
-
----
-
-## 🧑‍🏫 Teacher Tip
-
-Build it step-by-step in class:
-
-1. Create inputs
-2. Add button
-3. Write JS
-4. Add grading
-
----
-
-## 🏁 Result
-
-Students will build a **real-looking system** they can showcase in school 🎉

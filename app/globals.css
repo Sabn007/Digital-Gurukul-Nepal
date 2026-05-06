@@ -107,6 +107,23 @@ body {
   will-change: transform;
 }
 
+/* Footer ticker */
+@keyframes dg-ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.dg-ticker-track {
+  display: inline-flex;
+  min-width: max-content;
+  white-space: nowrap;
+  animation: dg-ticker-scroll 20s linear infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dg-animate-in,
   .dg-animate-in-delay-1,
@@ -125,5 +142,10 @@ body {
   .dg-float-water {
     animation: none;
     transform: rotate(1deg);
+  }
+
+  .dg-ticker-track {
+    animation: none;
+    transform: none;
   }
 }

@@ -370,7 +370,7 @@ export default function HomePage() {
                 Your classes run on a real LMS
               </h2>
               <p className="mt-3 text-base font-medium text-muted">
-                We don&apos;t just send PDFs—students and teachers use a dedicated platform built for
+                We don&apos;t just send PDFs, students and teachers use a dedicated platform built for
                 structured coding programs, progress, and communication.
               </p>
             </div>
