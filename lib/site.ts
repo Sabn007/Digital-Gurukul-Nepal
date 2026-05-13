@@ -1,5 +1,5 @@
 export const siteUrl = (
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://digital-gurukul.example"
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://digitalgurukulnepal.com"
 ).replace(/\/+$/, "");
 
 export const siteName = "Digital Gurukul";
