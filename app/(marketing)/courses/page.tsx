@@ -2,13 +2,34 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { CourseCatalogGrid } from "@/components/marketing/course-catalog-grid";
 import { Reveal } from "@/components/ui/reveal";
+import { JsonLd } from "@/components/seo/json-ld";
 import { getAllCourses } from "@/lib/courses";
 import { annualFeePerCourseLabel } from "@/lib/pricing";
+import {
+  breadcrumbJsonLd,
+  courseListJsonLd,
+  openGraphBase,
+  twitterBase,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Courses",
   description:
     "Browse HTML, CSS, JavaScript, Scratch, and Python courses for grades 5–10 with durations and levels.",
+  alternates: { canonical: "/courses" },
+  openGraph: {
+    ...openGraphBase,
+    url: "/courses",
+    title: "Courses · Digital Gurukul",
+    description:
+      "HTML, CSS, JavaScript, Scratch, and Python tracks for grades 5–10 — pick by level and duration.",
+  },
+  twitter: {
+    ...twitterBase,
+    title: "Courses · Digital Gurukul",
+    description:
+      "HTML, CSS, JavaScript, Scratch, and Python tracks for grades 5–10 — pick by level and duration.",
+  },
 };
 
 export default function CoursesPage() {
@@ -33,6 +54,14 @@ export default function CoursesPage() {
       <div className="mt-12">
         <CourseCatalogGrid courses={courses} />
       </div>
+      <JsonLd id="ld-courses" data={courseListJsonLd(courses)} />
+      <JsonLd
+        id="ld-breadcrumb-courses"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Courses", path: "/courses" },
+        ])}
+      />
     </div>
   );
 }

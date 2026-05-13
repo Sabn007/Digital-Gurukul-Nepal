@@ -2,10 +2,27 @@ import type { Metadata } from "next";
 import { Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/marketing/contact-form";
 import { Reveal } from "@/components/ui/reveal";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbJsonLd, openGraphBase, twitterBase } from "@/lib/seo";
+import { siteContact } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: "Contact Digital Gurukul about school partnerships, pilots, and student programs.",
+  alternates: { canonical: "/contact" },
+  openGraph: {
+    ...openGraphBase,
+    url: "/contact",
+    title: "Contact Digital Gurukul",
+    description:
+      "Reach out about school partnerships, pilots, and student coding programs in Nepal.",
+  },
+  twitter: {
+    ...twitterBase,
+    title: "Contact Digital Gurukul",
+    description:
+      "Reach out about school partnerships, pilots, and student coding programs in Nepal.",
+  },
 };
 
 export default function ContactPage() {
@@ -57,6 +74,37 @@ export default function ContactPage() {
         <ContactForm />
         </Reveal>
       </div>
+      <JsonLd
+        id="ld-breadcrumb-contact"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Contact", path: "/contact" },
+        ])}
+      />
+      <JsonLd
+        id="ld-contact-page"
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          name: "Contact Digital Gurukul",
+          description:
+            "Reach Digital Gurukul Nepal for school partnerships, pilots, and student programs.",
+          mainEntity: {
+            "@type": "Organization",
+            name: "Digital Gurukul Nepal",
+            email: siteContact.email,
+            telephone: siteContact.phone,
+            contactPoint: {
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              email: siteContact.email,
+              telephone: siteContact.phone,
+              areaServed: siteContact.addressCountry,
+              availableLanguage: ["en", "ne"],
+            },
+          },
+        }}
+      />
     </div>
   );
 }

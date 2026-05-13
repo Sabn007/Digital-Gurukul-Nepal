@@ -26,12 +26,27 @@ import {
 import { ButtonLink } from "@/components/ui/button-link";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
+import { openGraphBase, twitterBase } from "@/lib/seo";
 import { testimonials } from "@/data/testimonials";
 
 export const metadata: Metadata = {
   title: "Home",
   description:
     "Learn coding the fun way with interactive lessons, quizzes, and projects for grades 5–10.",
+  alternates: { canonical: "/" },
+  openGraph: {
+    ...openGraphBase,
+    url: "/",
+    title: "Digital Gurukul — Learn Coding the Fun Way",
+    description:
+      "Interactive coding lessons for grades 5–10 across HTML, CSS, JavaScript, Scratch, and Python.",
+  },
+  twitter: {
+    ...twitterBase,
+    title: "Digital Gurukul — Learn Coding the Fun Way",
+    description:
+      "Interactive coding lessons for grades 5–10 across HTML, CSS, JavaScript, Scratch, and Python.",
+  },
 };
 
 const features = [

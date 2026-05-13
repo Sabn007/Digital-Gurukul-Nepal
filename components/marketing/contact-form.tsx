@@ -1,7 +1,9 @@
 "use client";
 
 import { useForm } from "react-hook-form";
+import emailjs from "@emailjs/browser";
 import { Send } from "lucide-react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input, Label, Textarea } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -12,17 +14,55 @@ type FormValues = {
   message: string;
 };
 
+const serviceId = 'service_ykuzkum';
+const templateId = 'template_1imfr4d';
+const publicKey = 'cdzGhshVCfR2dD6Zc';
+
 export function ContactForm() {
+  const [feedback, setFeedback] = useState<{ kind: "success" | "error"; text: string } | null>(
+    null,
+  );
+
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    formState: { errors, isSubmitting },
   } = useForm<FormValues>({ mode: "onBlur" });
 
-  const onSubmit = (data: FormValues) => {
-    console.info("Contact demo submit", data);
-    reset();
+  const onSubmit = async (data: FormValues) => {
+    setFeedback(null);
+
+    if (!serviceId?.trim() || !templateId?.trim() || !publicKey?.trim()) {
+      setFeedback({
+        kind: "error",
+        text: "Contact email is not configured yet. Please reach us using the email above.",
+      });
+      return;
+    }
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          from_name: data.name,
+          from_email: data.email,
+          message: data.message,
+        },
+        { publicKey },
+      );
+      reset();
+      setFeedback({
+        kind: "success",
+        text: "Thanks! Your message was sent. We will get back to you soon.",
+      });
+    } catch {
+      setFeedback({
+        kind: "error",
+        text: "Something went wrong sending your message. Please try again or email us directly.",
+      });
+    }
   };
 
   return (
@@ -76,13 +116,20 @@ export function ContactForm() {
             <p className="mt-1.5 text-xs font-semibold text-red-600">{errors.message.message}</p>
           ) : null}
         </div>
-        <Button type="submit" variant="primary" className="w-full sm:w-auto">
+        <Button type="submit" variant="primary" className="w-full sm:w-auto" disabled={isSubmitting}>
           <Send className="h-4 w-4" aria-hidden />
-          Send message
+          {isSubmitting ? "Sending…" : "Send message"}
         </Button>
-        {isSubmitSuccessful ? (
-          <p className="text-sm font-bold text-accent" role="status">
-            Thanks! This is a demo — your note was logged to the console.
+        {feedback ? (
+          <p
+            className={
+              feedback.kind === "success"
+                ? "text-sm font-bold text-accent"
+                : "text-sm font-semibold text-red-600"
+            }
+            role="status"
+          >
+            {feedback.text}
           </p>
         ) : null}
       </form>

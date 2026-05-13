@@ -1,6 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 import "./globals.css";
+import { JsonLd } from "@/components/seo/json-ld";
+import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
+import {
+  ogImage,
+  siteDescription,
+  siteKeywords,
+  siteName,
+  siteTagline,
+  siteUrl,
+} from "@/lib/site";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -8,34 +18,74 @@ const nunito = Nunito({
   weight: ["400", "600", "700", "800"],
 });
 
-const siteUrl = "https://digital-gurukul.example";
+const titleDefault = `${siteName} — ${siteTagline}`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  title: {
-    default: "Digital Gurukul — Learn Coding the Fun Way",
-    template: "%s · Digital Gurukul",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png" }],
+    apple: [{ url: "/favicon.png", type: "image/png" }],
   },
-  description:
-    "Coding education for grades 5–10: interactive lessons, quizzes, and projects in HTML, CSS, JavaScript, Scratch, and Python.",
+  title: {
+    default: titleDefault,
+    template: `%s · ${siteName}`,
+  },
+  description: siteDescription,
+  applicationName: siteName,
+  keywords: siteKeywords,
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+  category: "education",
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "Digital Gurukul — Learn Coding the Fun Way",
-    description:
-      "School-friendly coding programs for grades 5–10: HTML, CSS, JavaScript, Scratch, and Python.",
+    title: titleDefault,
+    description: siteDescription,
     url: siteUrl,
-    siteName: "Digital Gurukul",
+    siteName,
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: ogImage.path,
+        width: ogImage.width,
+        height: ogImage.height,
+        alt: ogImage.alt,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Gurukul",
-    description: "Coding education for grades 5–10.",
+    title: titleDefault,
+    description: siteDescription,
+    images: [ogImage.path],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
   },
+    formatDetection: {
+    telephone: true,
+    email: true,
+    address: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#db2537" },
+    { media: "(prefers-color-scheme: dark)", color: "#db2537" },
+  ],
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -45,7 +95,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${nunito.variable} h-full antialiased`}>
-      <body className="min-h-full font-sans">{children}</body>
+      <body className="min-h-full font-sans">
+        {children}
+        <JsonLd id="ld-organization" data={organizationJsonLd()} />
+        <JsonLd id="ld-website" data={websiteJsonLd()} />
+      </body>
     </html>
   );
 }

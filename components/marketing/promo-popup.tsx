@@ -69,6 +69,7 @@ export function PromoPopup() {
             <div className="flex flex-wrap gap-2 pt-1">
               <Link
                 href="/contact"
+                onClick={() => setIsOpen(false)}
                 className="rounded-xl bg-linear-to-r from-primary to-[#b91d2e] px-4 py-2 text-sm font-bold text-white shadow-sm transition-[transform,opacity] duration-200 hover:scale-[1.02] hover:opacity-95"
               >
                 Book a free demo

@@ -4,12 +4,28 @@ import { Banknote, Check } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
-import { annualFeePerCourseLabel } from "@/lib/pricing";
+import { JsonLd } from "@/components/seo/json-ld";
+import { ANNUAL_FEE_PER_COURSE_NPR, annualFeePerCourseLabel } from "@/lib/pricing";
+import { breadcrumbJsonLd, openGraphBase, twitterBase } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Pricing",
   description:
     "Simple annual pricing per course for Digital Gurukul Nepal programs for grades 5–10.",
+  alternates: { canonical: "/pricing" },
+  openGraph: {
+    ...openGraphBase,
+    url: "/pricing",
+    title: "Pricing · Digital Gurukul",
+    description:
+      "Transparent annual tuition per course for school coding programs across Nepal.",
+  },
+  twitter: {
+    ...twitterBase,
+    title: "Pricing · Digital Gurukul",
+    description:
+      "Transparent annual tuition per course for school coding programs across Nepal.",
+  },
 };
 
 const included = [
@@ -76,6 +92,28 @@ export default function PricingPage() {
           </Card>
         </Reveal>
       </div>
+      <JsonLd
+        id="ld-breadcrumb-pricing"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "Pricing", path: "/pricing" },
+        ])}
+      />
+      <JsonLd
+        id="ld-pricing-offer"
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Offer",
+          name: "Annual course tuition (per course)",
+          description:
+            "One annual tuition per course for Digital Gurukul Nepal programs (grades 5–10).",
+          price: ANNUAL_FEE_PER_COURSE_NPR,
+          priceCurrency: "NPR",
+          category: "Education",
+          availability: "https://schema.org/InStock",
+          eligibleRegion: { "@type": "Country", name: "Nepal" },
+        }}
+      />
     </div>
   );
 }

@@ -2,12 +2,28 @@ import type { Metadata } from "next";
 import { Heart, Lightbulb, Users } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
+import { JsonLd } from "@/components/seo/json-ld";
+import { breadcrumbJsonLd, openGraphBase, twitterBase } from "@/lib/seo";
 import { teamMembers } from "@/data/team";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "Mission, vision, and why coding matters for students in grades 5–10. Meet the team behind Digital Gurukul.",
+  alternates: { canonical: "/about" },
+  openGraph: {
+    ...openGraphBase,
+    url: "/about",
+    title: "About Digital Gurukul",
+    description:
+      "Our mission, vision, and the team building friendly coding programs for grades 5–10 in Nepal.",
+  },
+  twitter: {
+    ...twitterBase,
+    title: "About Digital Gurukul",
+    description:
+      "Our mission, vision, and the team building friendly coding programs for grades 5–10 in Nepal.",
+  },
 };
 
 export default function AboutPage() {
@@ -105,6 +121,13 @@ export default function AboutPage() {
           ))}
         </div>
       </section>
+      <JsonLd
+        id="ld-breadcrumb-about"
+        data={breadcrumbJsonLd([
+          { name: "Home", path: "/" },
+          { name: "About", path: "/about" },
+        ])}
+      />
     </div>
   );
 }
