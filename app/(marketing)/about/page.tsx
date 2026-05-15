@@ -1,30 +1,18 @@
-import type { Metadata } from "next";
 import { Heart, Lightbulb, Users } from "lucide-react";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbJsonLd, openGraphBase, twitterBase } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { teamMembers } from "@/data/team";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "About",
+  socialTitle: "About Digital Gurukul Nepal | Digital Coding School",
   description:
-    "Mission, vision, and why coding matters for students in grades 5–10. Meet the team behind Digital Gurukul.",
-  alternates: { canonical: "/about" },
-  openGraph: {
-    ...openGraphBase,
-    url: "/about",
-    title: "About Digital Gurukul",
-    description:
-      "Our mission, vision, and the team building friendly coding programs for grades 5–10 in Nepal.",
-  },
-  twitter: {
-    ...twitterBase,
-    title: "About Digital Gurukul",
-    description:
-      "Our mission, vision, and the team building friendly coding programs for grades 5–10 in Nepal.",
-  },
-};
+    "Learn about Digital Gurukul Nepal—our mission to bring digital coding education to students in grades 5–10, and the team behind our school programs.",
+  path: "/about",
+  keywords: ["about digital gurukul", "digital gurukul team"],
+});
 
 export default function AboutPage() {
   return (

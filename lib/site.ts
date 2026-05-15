@@ -8,10 +8,27 @@ export const siteLegalName = "Digital Gurukul Nepal";
 
 export const siteTagline = "Learn Coding the Fun Way";
 
+/** Brand strings used in titles, copy, and structured data. */
+export const siteAlternateNames = [
+  "Digital Gurukul",
+  "Digital Gurukul Nepal",
+  "digital gurukul",
+  "digital gurukul nepal",
+  "DG Nepal",
+] as const;
+
 export const siteDescription =
-  "Coding education for grades 5–10: interactive lessons, quizzes, and projects in HTML, CSS, JavaScript, Scratch, and Python. School-friendly programs delivered across Nepal.";
+  "Digital Gurukul Nepal is a digital coding school for grades 5–10: interactive lessons, quizzes, and projects in HTML, CSS, JavaScript, Scratch, and Python. School-friendly programs across Nepal.";
 
 export const siteKeywords = [
+  "Digital Gurukul",
+  "Digital Gurukul Nepal",
+  "digital gurukul",
+  "digital gurukul nepal",
+  "digital gurukul coding",
+  "digital education Nepal",
+  "digital learning Nepal",
+  "digital school Nepal",
   "coding for kids",
   "coding for students",
   "Nepal coding school",
@@ -22,8 +39,7 @@ export const siteKeywords = [
   "Python for beginners",
   "grade 5 to 10 coding",
   "computer science Nepal",
-  "Digital Gurukul",
-  "Digital Gurukul Nepal",
+  "tech bootcamp Nepal",
 ];
 
 export const siteContact = {
@@ -41,8 +57,11 @@ export const ogImage = {
   path: "/banner.jpg",
   width: 1200,
   height: 630,
-  alt: "Students learning coding with Digital Gurukul Nepal",
+  alt: "Digital Gurukul Nepal — students learning digital coding in school",
 } as const;
+
+export const defaultPageTitle =
+  "Digital Gurukul Nepal — Learn Coding the Fun Way | Digital Education";
 
 export type MarketingRoute = {
   path: "" | `/${string}`;

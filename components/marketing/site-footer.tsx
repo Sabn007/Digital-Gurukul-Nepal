@@ -14,10 +14,10 @@ export function SiteFooter() {
       <footer className="mt-auto border-t border-slate-200/80 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 md:flex-row md:items-start md:justify-between">
           <div className="max-w-sm">
-            <p className="text-lg font-extrabold text-foreground">Digital Gurukul</p>
+            <p className="text-lg font-extrabold text-foreground">Digital Gurukul Nepal</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Friendly coding lessons for grades 5-10, built for curious students and supportive
-              schools.
+              Digital Gurukul brings friendly digital coding lessons for grades 5–10—built for
+              curious students and supportive schools across Nepal.
             </p>
           </div>
           <div>

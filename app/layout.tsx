@@ -4,11 +4,11 @@ import "./globals.css";
 import { JsonLd } from "@/components/seo/json-ld";
 import { organizationJsonLd, websiteJsonLd } from "@/lib/seo";
 import {
+  defaultPageTitle,
   ogImage,
   siteDescription,
   siteKeywords,
   siteName,
-  siteTagline,
   siteUrl,
 } from "@/lib/site";
 
@@ -18,8 +18,6 @@ const nunito = Nunito({
   weight: ["400", "600", "700", "800"],
 });
 
-const titleDefault = `${siteName} — ${siteTagline}`;
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   icons: {
@@ -27,8 +25,8 @@ export const metadata: Metadata = {
     apple: [{ url: "/favicon.png", type: "image/png" }],
   },
   title: {
-    default: titleDefault,
-    template: `%s · ${siteName}`,
+    default: defaultPageTitle,
+    template: `%s | ${siteName} Nepal`,
   },
   description: siteDescription,
   applicationName: siteName,
@@ -41,7 +39,7 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: titleDefault,
+    title: defaultPageTitle,
     description: siteDescription,
     url: siteUrl,
     siteName,
@@ -58,7 +56,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: titleDefault,
+    title: defaultPageTitle,
     description: siteDescription,
     images: [ogImage.path],
   },

@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const POPUP_INTERVAL_MS = 10 * 60 * 1000;
+const BOOTCAMP_REGISTRATION_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSfcTKj3IbaHwLoft0bzQIq1q2ZfwkcGtP63ypkz0FmaC45Hxg/viewform";
 
 export function PromoPopup() {
   const [isOpen, setIsOpen] = useState(false);
@@ -50,30 +51,33 @@ export function PromoPopup() {
                 Limited seats
               </p>
               <p className="mt-2 text-sm font-bold text-white/95">
-                Join the next Digital Gurukul wave in your school.
+                7 days of hands-on HTML, CSS, JavaScript, Node.js &amp; React.
               </p>
             </div>
           </div>
 
           <div className="space-y-4 px-5 py-5 md:px-6 md:py-6">
             <div className="inline-flex rounded-full bg-primary/10 px-3 py-1 text-xs font-black uppercase tracking-wider text-primary">
-              Special Announcement
+              7-Day Tech Bootcamp
             </div>
             <h3 className="text-2xl font-extrabold leading-tight text-foreground">
-              Bigger, bolder coding adventures are almost here
+              Future Innovators Tech Bootcamp
             </h3>
             <p className="text-sm font-medium leading-relaxed text-muted">
-              New batches bring exciting projects, live demo sessions, school showcases, and fun
-              rewards for top creators in grades 5-10.
+              Join our intensive 7-day bootcamp covering HTML, CSS, JavaScript, Node.js, and React. Build real
+              projects, learn modern web development, and level up your coding skills—open for
+              classes 4 through 12 and +2 students.
             </p>
             <div className="flex flex-wrap gap-2 pt-1">
-              <Link
-                href="/contact"
+              <a
+                href={BOOTCAMP_REGISTRATION_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 onClick={() => setIsOpen(false)}
                 className="rounded-xl bg-linear-to-r from-primary to-[#b91d2e] px-4 py-2 text-sm font-bold text-white shadow-sm transition-[transform,opacity] duration-200 hover:scale-[1.02] hover:opacity-95"
               >
-                Book a free demo
-              </Link>
+                Register now
+              </a>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}

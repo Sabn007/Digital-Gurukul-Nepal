@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import {
   BookOpenCheck,
@@ -26,27 +25,21 @@ import {
 import { ButtonLink } from "@/components/ui/button-link";
 import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
-import { openGraphBase, twitterBase } from "@/lib/seo";
+import { JsonLd } from "@/components/seo/json-ld";
+import { faqJsonLd, pageMetadata } from "@/lib/seo";
+import { defaultPageTitle } from "@/lib/site";
 import { testimonials } from "@/data/testimonials";
 
-export const metadata: Metadata = {
+export const metadata = {
+  ...pageMetadata({
   title: "Home",
+  socialTitle: defaultPageTitle,
   description:
-    "Learn coding the fun way with interactive lessons, quizzes, and projects for grades 5–10.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    ...openGraphBase,
-    url: "/",
-    title: "Digital Gurukul — Learn Coding the Fun Way",
-    description:
-      "Interactive coding lessons for grades 5–10 across HTML, CSS, JavaScript, Scratch, and Python.",
-  },
-  twitter: {
-    ...twitterBase,
-    title: "Digital Gurukul — Learn Coding the Fun Way",
-    description:
-      "Interactive coding lessons for grades 5–10 across HTML, CSS, JavaScript, Scratch, and Python.",
-  },
+    "Digital Gurukul Nepal helps students in grades 5–10 learn digital coding through HTML, CSS, JavaScript, Scratch, and Python—with fun lessons, quizzes, and school-ready projects.",
+  path: "/",
+  keywords: ["digital gurukul home", "learn coding Nepal"],
+  }),
+  title: { absolute: defaultPageTitle },
 };
 
 const features = [
@@ -174,6 +167,8 @@ const faqs = [
 
 export default function HomePage() {
   return (
+    <>
+      <JsonLd id="ld-faq" data={faqJsonLd(faqs)} />
     <div>
       <section className="relative overflow-hidden bg-slate-900 text-white">
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(219,37,55,0.3),transparent_52%),radial-gradient(ellipse_at_bottom_left,rgba(42,150,222,0.22),transparent_48%)]" />
@@ -251,11 +246,11 @@ export default function HomePage() {
               Grades 5–10
             </span>
             <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Learn Coding the Fun Way
+              Digital Gurukul — Learn Coding the Fun Way
             </h1>
             <p className="max-w-xl text-lg font-medium leading-relaxed text-muted">
-              Bright, school-ready coding programs in HTML, CSS, JavaScript, Scratch, and Python, built
-              so students stay curious and confident.
+              Digital Gurukul Nepal brings bright, school-ready digital coding programs in HTML,
+              CSS, JavaScript, Scratch, and Python—built so students stay curious and confident.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <ButtonLink href="/courses" variant="primary" className="justify-center sm:w-auto">
@@ -661,5 +656,6 @@ export default function HomePage() {
         </Reveal>
       </section>
     </div>
+    </>
   );
 }

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import { Banknote, Check } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button-link";
@@ -6,27 +5,16 @@ import { Card, CardDescription, CardTitle } from "@/components/ui/card";
 import { Reveal } from "@/components/ui/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
 import { ANNUAL_FEE_PER_COURSE_NPR, annualFeePerCourseLabel } from "@/lib/pricing";
-import { breadcrumbJsonLd, openGraphBase, twitterBase } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Pricing",
+  socialTitle: "Digital Gurukul Pricing | School Coding Programs Nepal",
   description:
-    "Simple annual pricing per course for Digital Gurukul Nepal programs for grades 5–10.",
-  alternates: { canonical: "/pricing" },
-  openGraph: {
-    ...openGraphBase,
-    url: "/pricing",
-    title: "Pricing · Digital Gurukul",
-    description:
-      "Transparent annual tuition per course for school coding programs across Nepal.",
-  },
-  twitter: {
-    ...twitterBase,
-    title: "Pricing · Digital Gurukul",
-    description:
-      "Transparent annual tuition per course for school coding programs across Nepal.",
-  },
-};
+    "Transparent annual pricing for Digital Gurukul Nepal coding courses—simple per-course fees for digital education programs in grades 5–10.",
+  path: "/pricing",
+  keywords: ["digital gurukul pricing", "coding school fees Nepal"],
+});
 
 const included = [
   "Full access to one course track for the school year",
@@ -41,10 +29,11 @@ export default function PricingPage() {
       <Reveal>
         <div className="mx-auto max-w-3xl text-center">
           <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-            Pricing
+            Digital Gurukul Pricing
           </h1>
           <p className="mt-4 text-lg font-medium text-muted">
-            One straightforward annual fee per course so schools and families can plan ahead.
+            One straightforward annual fee per Digital Gurukul course so schools and families can
+            plan ahead.
           </p>
         </div>
       </Reveal>

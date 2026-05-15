@@ -1,29 +1,18 @@
-import type { Metadata } from "next";
 import { Mail, Phone } from "lucide-react";
 import { ContactForm } from "@/components/marketing/contact-form";
 import { Reveal } from "@/components/ui/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
-import { breadcrumbJsonLd, openGraphBase, twitterBase } from "@/lib/seo";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 import { siteContact } from "@/lib/site";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact",
-  description: "Contact Digital Gurukul about school partnerships, pilots, and student programs.",
-  alternates: { canonical: "/contact" },
-  openGraph: {
-    ...openGraphBase,
-    url: "/contact",
-    title: "Contact Digital Gurukul",
-    description:
-      "Reach out about school partnerships, pilots, and student coding programs in Nepal.",
-  },
-  twitter: {
-    ...twitterBase,
-    title: "Contact Digital Gurukul",
-    description:
-      "Reach out about school partnerships, pilots, and student coding programs in Nepal.",
-  },
-};
+  socialTitle: "Contact Digital Gurukul Nepal | School Partnerships",
+  description:
+    "Contact Digital Gurukul Nepal for school partnerships, pilots, tech bootcamps, and digital coding programs for students across Nepal.",
+  path: "/contact",
+  keywords: ["contact digital gurukul", "digital gurukul nepal contact"],
+});
 
 export default function ContactPage() {
   return (
@@ -32,7 +21,7 @@ export default function ContactPage() {
         <Reveal>
         <div>
           <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl">
-            Contact us
+            Contact Digital Gurukul
           </h1>
           <p className="mt-4 text-lg font-medium text-muted">
             Share a note about your school or ask a question. We&apos;ll route this to your inbox once a backend is
