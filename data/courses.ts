@@ -83,7 +83,7 @@ export const courses: Course[] = [
         type: "text",
         durationMinutes: 25,
         summary:
-          "Build a simple profile card using semantic tags—great portfolio starter for grades 5–10.",
+          "Build a simple profile card using semantic tags great portfolio starter for grades 4–10.",
       },
     ],
   },
@@ -199,7 +199,7 @@ export const courses: Course[] = [
         type: "text",
         durationMinutes: 24,
         summary:
-          "Guide programs with if/else and repeat work with for loops—perfect for quizzes and games.",
+          "Guide programs with if/else and repeat work with for loops perfect for quizzes and games.",
       },
       {
         id: "js-l3",
@@ -231,7 +231,7 @@ export const courses: Course[] = [
         type: "text",
         durationMinutes: 30,
         summary:
-          "Build a counter or color toggler—your first interactive widget on a real page.",
+          "Build a counter or color toggler your first interactive widget on a real page.",
       },
     ],
   },
@@ -367,7 +367,7 @@ export const courses: Course[] = [
         type: "text",
         durationMinutes: 28,
         summary:
-          "Draw shapes and patterns—geometry plus code equals gallery-ready art.",
+          "Draw shapes and patterns geometry plus code equals gallery-ready art.",
       },
     ],
   },

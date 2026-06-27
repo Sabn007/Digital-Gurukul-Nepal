@@ -10,7 +10,7 @@ export const metadata = pageMetadata({
   title: "Courses",
   socialTitle: "Digital Gurukul Courses | HTML, CSS, JavaScript, Scratch & Python",
   description:
-    "Explore Digital Gurukul Nepal coding courses—HTML, CSS, JavaScript, Scratch, and Python tracks for grades 5–10 with clear levels and durations.",
+    "Explore Digital Gurukul Nepal coding courses HTML, CSS, JavaScript, Scratch, and Python tracks for grades 4–10 with clear levels and durations.",
   path: "/courses",
   keywords: ["digital gurukul courses", "coding courses Nepal"],
 });
@@ -25,15 +25,15 @@ export default function CoursesPage() {
       <Reveal>
         <div className="mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center rounded-full bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-accent ring-1 ring-accent/25">
-            Grades 5–10 · HTML to Python
+            Grades 4–10 · HTML to Python
           </p>
           <h1 className="mt-4 bg-linear-to-r from-primary to-accent bg-clip-text text-4xl font-extrabold tracking-tight text-transparent sm:text-5xl">
             Digital Gurukul Courses
           </h1>
           <p className="mt-4 text-lg font-medium text-muted">
-            Overview of Digital Gurukul Nepal coding tracks—reach out for syllabi, pacing, and how
+            Overview of Digital Gurukul Nepal coding tracks reach out for syllabi, pacing, and how
             we support teachers.
-            Tuition is {courseFeeLabel} per course—see{" "}
+            Tuition is {courseFeeLabel} per course see{" "}
             <Link href="/pricing" className="font-bold text-accent hover:underline">
               pricing
             </Link>{" "}

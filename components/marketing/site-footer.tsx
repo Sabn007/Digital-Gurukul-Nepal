@@ -16,7 +16,7 @@ export function SiteFooter() {
           <div className="max-w-sm">
             <p className="text-lg font-extrabold text-foreground">Digital Gurukul Nepal</p>
             <p className="mt-2 text-sm leading-relaxed text-muted">
-              Digital Gurukul brings friendly digital coding lessons for grades 5–10—built for
+              Digital Gurukul brings friendly digital coding lessons for grades 4–10 built for
               curious students and supportive schools across Nepal.
             </p>
           </div>

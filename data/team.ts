@@ -10,7 +10,7 @@ export const teamMembers: TeamMember[] = [
     id: "m1",
     name: "Susan Adhikari",
     role: "Lead Educator, CS",
-    bio: "Former classroom teacher; designs age-appropriate projects for grades 5–10.",
+    bio: "Former classroom teacher; designs age-appropriate projects for grades 4–10.",
   },
   {
     id: "m2",

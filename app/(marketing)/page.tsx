@@ -28,14 +28,15 @@ import { Reveal } from "@/components/ui/reveal";
 import { JsonLd } from "@/components/seo/json-ld";
 import { faqJsonLd, pageMetadata } from "@/lib/seo";
 import { defaultPageTitle } from "@/lib/site";
-import { testimonials } from "@/data/testimonials";
+import { TestimonialScroll } from "@/components/marketing/testimonial-scroll";
+import { bootcampTestimonials } from "@/data/bootcamp-testimonials";
 
 export const metadata = {
   ...pageMetadata({
   title: "Home",
   socialTitle: defaultPageTitle,
   description:
-    "Digital Gurukul Nepal helps students in grades 5–10 learn digital coding through HTML, CSS, JavaScript, Scratch, and Python—with fun lessons, quizzes, and school-ready projects.",
+    "Digital Gurukul Nepal helps students in grades 4–10 learn digital coding through HTML, CSS, JavaScript, Scratch, and Python with fun lessons, quizzes, and school-ready projects.",
   path: "/",
   keywords: ["digital gurukul home", "learn coding Nepal"],
   }),
@@ -131,7 +132,7 @@ const skillOutcomes = [
 const lmsHighlights = [
   {
     title: "All-in-one course hub",
-    body: "Our learning management system (LMS) keeps each track in one place—lessons, links, and files—so students always know where to go.",
+    body: "Our learning management system (LMS) keeps each track in one place lessons, links, and file so students always know where to go.",
     icon: Layers,
   },
   {
@@ -243,14 +244,14 @@ export default function HomePage() {
           <div className="dg-animate-in dg-animate-in-delay-1 flex-1 space-y-6">
             <span className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-primary ring-1 ring-primary/20">
               <Star className="h-3.5 w-3.5 fill-accent text-accent" />
-              Grades 5–10
+              Grades 4–10
             </span>
             <h1 className="text-4xl font-extrabold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
-              Digital Gurukul — Learn Coding the Fun Way
+              Digital Gurukul   Learn Coding the Fun Way
             </h1>
             <p className="max-w-xl text-lg font-medium leading-relaxed text-muted">
               Digital Gurukul Nepal brings bright, school-ready digital coding programs in HTML,
-              CSS, JavaScript, Scratch, and Python—built so students stay curious and confident.
+              CSS, JavaScript, Scratch, and Python built so students stay curious and confident.
             </p>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
               <ButtonLink href="/courses" variant="primary" className="justify-center sm:w-auto">
@@ -560,34 +561,29 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* <section className="border-y border-slate-200/80 bg-white py-16">
+      <section className="border-y border-slate-200/80 bg-white py-16">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Reveal>
-          <h2 className="text-center text-3xl font-extrabold text-foreground sm:text-4xl">
-            Students are cheering
-          </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-center text-muted">
-            Dummy quotes for layout, swap with real stories from your school             community.
-          </p>
+            <div className="mx-auto max-w-2xl text-center">
+              <p className="text-xs font-extrabold uppercase tracking-wide text-primary">
+                7-Day HTML, CSS & JS Bootcamp
+              </p>
+              <h2 className="mt-2 text-3xl font-extrabold text-foreground sm:text-4xl">
+                Students are cheering
+              </h2>
+              <p className="mt-3 text-base font-medium text-muted">
+                Hear from our students who completed our week-long web bootcamp from first tags
+                to a finished mini-site.
+              </p>
+            </div>
           </Reveal>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {testimonials.map((t, i) => (
-              <Reveal key={t.id} delayMs={i * 90}>
-              <Card className="relative overflow-hidden border-2 border-slate-100 motion-safe:transition-transform motion-safe:duration-300 motion-safe:hover:-translate-y-1">
-                <div className="absolute right-4 top-4 text-4xl font-black text-primary/10">
-                  “
-                </div>
-                <p className="text-sm font-semibold leading-relaxed text-foreground">{t.quote}</p>
-                <p className="mt-4 text-sm font-extrabold text-primary">{t.name}</p>
-                <p className="text-xs font-bold text-muted">
-                  {t.role} · {t.school}
-                </p>
-              </Card>
-              </Reveal>
-            ))}
-          </div>
+          <Reveal delayMs={100}>
+            <div className="mt-10">
+              <TestimonialScroll items={bootcampTestimonials} />
+            </div>
+          </Reveal>
         </div>
-      </section> */}
+      </section>
 
       <section className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
         <Reveal>

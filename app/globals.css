@@ -124,6 +124,17 @@ body {
   animation: dg-ticker-scroll 20s linear infinite;
 }
 
+.dg-ticker-track-testimonials {
+  display: flex;
+  gap: 1.5rem;
+  min-width: max-content;
+  animation: dg-ticker-scroll 50s linear infinite;
+}
+
+.dg-ticker-track-testimonials:hover {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .dg-animate-in,
   .dg-animate-in-delay-1,
@@ -144,7 +155,8 @@ body {
     transform: rotate(1deg);
   }
 
-  .dg-ticker-track {
+  .dg-ticker-track,
+  .dg-ticker-track-testimonials {
     animation: none;
     transform: none;
   }

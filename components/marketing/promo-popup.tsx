@@ -40,7 +40,7 @@ export function PromoPopup() {
         >
           <Image
             src="/promo-website-design-ai.jpg"
-            alt="Website Design and AI Tools for grades 4–10 — admission open at Digital Gurukul Nepal. Learn coding, design, and AI with our own LMS featuring a coding playground, leaderboard, and smart learning badges."
+            alt="Website Design and AI Tools for grades 4–10 admission open at Digital Gurukul Nepal. Learn coding, design, and AI with our own LMS featuring a coding playground, leaderboard, and smart learning badge."
             fill
             className="object-cover"
             sizes="(max-width: 512px) 100vw, 512px"

@@ -11,7 +11,7 @@ export const metadata = pageMetadata({
   title: "Pricing",
   socialTitle: "Digital Gurukul Pricing | School Coding Programs Nepal",
   description:
-    "Transparent pricing for Digital Gurukul Nepal coding courses—NPR 7,500 per course for digital education programs in grades 5–10.",
+    "Transparent pricing for Digital Gurukul Nepal coding courses NPR 7,500 per course for digital education programs in grades 4–10.",
   path: "/pricing",
   keywords: ["digital gurukul pricing", "coding school fees Nepal"],
 });
@@ -106,7 +106,7 @@ export default function PricingPage() {
             "@type": "Offer",
             name: "Course tuition (per course)",
             description:
-              "NPR 7,500 per course for Digital Gurukul Nepal programs (grades 5–10).",
+              "NPR 7,500 per course for Digital Gurukul Nepal programs (grades 4–10).",
             price: COURSE_FEE_NPR,
             priceCurrency: "NPR",
             category: "Education",

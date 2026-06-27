@@ -9,7 +9,7 @@ export const metadata = pageMetadata({
   title: "About",
   socialTitle: "About Digital Gurukul Nepal | Digital Coding School",
   description:
-    "Learn about Digital Gurukul Nepal—our mission to bring digital coding education to students in grades 5–10, and the team behind our school programs.",
+    "Learn about Digital Gurukul Nepal our mission to bring digital coding education to students in grades 4–10, and the team behind our school programs.",
   path: "/about",
   keywords: ["about digital gurukul", "digital gurukul team"],
 });
@@ -37,7 +37,7 @@ export default function AboutPage() {
             <CardTitle className="mt-4">Mission</CardTitle>
             <CardDescription>
               Make coding approachable with structured paths, delightful visuals, and classroom-ready
-              pacing for grades 5–10.
+              pacing for grades 4–10.
             </CardDescription>
           </Card>
         </Reveal>
@@ -60,7 +60,7 @@ export default function AboutPage() {
         <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl">Why coding?</h2>
         <p className="mt-3 max-w-3xl text-muted">
           Coding strengthens problem-solving, storytelling, and persistence. Starting in middle
-          school gives learners time to explore many languages—from visual blocks to Python before
+          school gives learners time to explore many languages from visual blocks to Python before
           higher-stakes academics. Our curriculum balances fun, rigor, and frequent wins.
         </p>
         </Reveal>
@@ -81,15 +81,12 @@ export default function AboutPage() {
         </ul>
       </section>
 
-      <section className="mt-16">
+      {/* <section className="mt-16">
         <Reveal>
         <div className="flex items-center gap-3">
           <Users className="h-8 w-8 text-primary" />
           <h2 className="text-2xl font-extrabold text-foreground sm:text-3xl">Team</h2>
         </div>
-        <p className="mt-2 max-w-2xl text-sm font-medium text-muted">
-          Demo bios—replace with your organization&apos;s people and photos.
-        </p>
         </Reveal>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {teamMembers.map((m, i) => (
@@ -108,7 +105,7 @@ export default function AboutPage() {
             </Reveal>
           ))}
         </div>
-      </section>
+      </section> */}
       <JsonLd
         id="ld-breadcrumb-about"
         data={breadcrumbJsonLd([

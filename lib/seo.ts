@@ -17,7 +17,7 @@ import type { Course } from "@/types/course";
 
 /**
  * Spread into each page's `metadata.openGraph` so the OG image, type, locale,
- * and siteName persist (Next.js replaces — does not merge — nested metadata).
+ * and siteName persist (Next.js replaces   does not merge   nested metadata).
  */
 export const openGraphBase = {
   type: "website",
@@ -176,7 +176,7 @@ export function courseListJsonLd(courses: Course[]) {
     "@type": "ItemList",
     name: "Digital Gurukul coding courses",
     description:
-      "Digital coding courses from Digital Gurukul Nepal for grades 5–10.",
+      "Digital coding courses from Digital Gurukul Nepal for grades 4–10.",
     itemListElement: courses.map((course, index) => ({
       "@type": "ListItem",
       position: index + 1,
@@ -192,7 +192,7 @@ export function courseListJsonLd(courses: Course[]) {
         audience: {
           "@type": "EducationalAudience",
           educationalRole: "student",
-          audienceType: "Grades 5–10",
+          audienceType: "Grades 4–10",
         },
         hasCourseInstance: {
           "@type": "CourseInstance",

@@ -47,12 +47,14 @@ export default function ContactPage() {
                 <Phone className="h-5 w-5" />
               </span>
               <div>
-                <p className="text-sm font-extrabold text-foreground">Call us</p>
+                <p className="text-sm font-extrabold text-foreground">WhatsApp us</p>
                 <a
-                  href="tel:+9779812781125"
+                  href={siteContact.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm font-semibold text-primary hover:underline"
                 >
-                  9812781125
+                  {siteContact.phoneDisplay}
                 </a>
               </div>
             </div>
